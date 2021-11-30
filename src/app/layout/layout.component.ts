@@ -12,6 +12,9 @@ export class LayoutComponent implements OnInit {
   filterInput: string = '';
   posts: Post[] = [];
 
+  itemsPerPage = 5;
+  currentPage = 1;
+
   constructor(
     private post: PostService
   ) { }
@@ -20,6 +23,10 @@ export class LayoutComponent implements OnInit {
     this.post.getPosts().subscribe(posts => {
       this.posts = posts;
     });
+  }
+
+  onPageChange(event: number): void {
+    this.currentPage = event;
   }
 
 }

@@ -19,11 +19,15 @@
       <th>Title</th>
       <th>Body</th>
     </tr>
-    <tr *ngFor="let post of posts | searchFilter:filterInput">
+    <tr *ngFor="let post of posts | searchFilter:filterInput | paginate: {itemsPerPage: itemsPerPage, currentPage: currentPage}">
       <td>{{post.userId}}</td>
       <td>{{post.id}}</td>
       <td>{{post.title}}</td>
       <td>{{post.body}}</td>
     </tr>
   </table>
+</div>
+
+<div class="text-center">
+  <pagination-controls (pageChange)="onPageChange($event)"></pagination-controls>
 </div>
