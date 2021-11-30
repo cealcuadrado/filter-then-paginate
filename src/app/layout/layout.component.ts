@@ -9,6 +9,7 @@ import { PostService } from './post.service';
 })
 export class LayoutComponent implements OnInit {
 
+  filterInput: string = '';
   posts: Post[] = [];
 
   constructor(
