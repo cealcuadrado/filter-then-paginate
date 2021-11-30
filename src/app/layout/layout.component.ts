@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Post } from './post';
+import { PostService } from './post.service';
 
 @Component({
   selector: 'app-layout',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LayoutComponent implements OnInit {
 
-  constructor() { }
+  posts: Post[] = [];
+
+  constructor(
+    private post: PostService
+  ) { }
 
   ngOnInit(): void {
+    this.post.getPosts().subscribe(posts => {
+      this.posts = posts;
+    });
   }
 
 }
